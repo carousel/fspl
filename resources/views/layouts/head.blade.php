@@ -29,4 +29,6 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-social.css">
+    <link rel="stylesheet" href="assets/css/pages/portfolio-v2.css">
 </head> 
