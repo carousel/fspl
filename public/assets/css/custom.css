@@ -1,0 +1,27 @@
+/* Add here all your css styles (customizations) */
+.container .title-box {
+    border: none;
+}
+.footer a.btn-u {
+    color: #fff;
+    font-size: 25px;
+    padding: 20px 45px;
+    margin: 25px 0px;
+}
+.header .navbar-default .navbar-nav > li > a.btn-u {
+    background: #e67e22 !important;
+    color: #fff;
+}
+.bold {
+    font-weight: bold !Important;
+}
+.header .open > .dropdown-menu {
+    display: block;
+}
+.header .btn-group {
+    display: inline-block;
+}
+.header ul.nav li .btn-group .btn-u {
+    padding: 9px 13px;
+}
+
