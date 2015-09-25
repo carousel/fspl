@@ -21,22 +21,37 @@ class SessionController extends Controller
     }
     public function postSignin()
     {
-        $input = \Request::all();
-        $validator = $this->validator($input);
+        $input = \Request::except('_token');
+        $validator = $this->signinValidator($input);
         if($validator->fails()){
             return \Redirect::to('/signin')
                 ->withErrors($validator);
-        }else{
+        }
+        if(\Auth::attempt($input)){
             $message = 'Welcome ' . $input['email'];
             return \Redirect::to('/')
                 ->with('message',$message);
+        }else{
+            $error = 'Your password is incorrect, please try again';
+            return \Redirect::to('/signin')
+                ->with('error',$error);
         }
+
     }
-    public function validator(array $data)
+    public function signinValidator(array $data)
     {
         return Validator::make($data, [
+            'email' => 'required|exists:users',
+            'password' => 'required',
+        ]);
+    }
+    public function signupValidator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required',
             'email' => 'required',
             'password' => 'required|confirmed',
+            'password_confirmation' => 'required|same:password',
         ]);
     }
 
@@ -52,8 +67,27 @@ class SessionController extends Controller
 
     public function postSignup()
     {
-        $input = \Input::all();
-        return $input;
+        $input = \Request::all();
+        $validator = $this->signupValidator($input);
+        if($validator->fails()){
+            return \Redirect::to('/signup')
+                ->withErrors($validator);
+        }else{
+            $user = new \App\User;
+            $user->name = $input['name'];
+            $user->email = $input['email'];
+            $user->password  = bcrypt($input['password']);
+            $user->save();
+            return \Redirect::to('/signin')
+                ->with('message','Thanks for registering, you can now login');
+        }
+    }
+
+    public function getSignout()
+    {
+        \Auth::logout();
+        return \Redirect::to('/')
+            ->with('message','You are now logged out');
     }
 
 

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@include('_partials.messages')
+        @include('_partials.messages')
     @section('content')
         <!--=== Slider ===-->
         @include('layouts.slider')

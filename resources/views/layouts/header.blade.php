@@ -66,6 +66,15 @@
                             </a>
                         </li>
                         <!-- End Sign Up -->
+                        <!-- Signout -->                        
+                    @if(\Auth::user())
+                        <li class="">
+                            <a href="/signout" class="btn-u btn-u-orange" style='margin-left:1px;'>
+                                Signout
+                            </a>
+                        </li>
+                    @endif
+                        <!-- End Signout -->
                         
                     </ul>
                 </div><!--/navbar-collapse-->

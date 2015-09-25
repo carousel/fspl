@@ -1,5 +1,5 @@
 
-    <!--<div class="footer">
+    <div class="footer">
         <div class="container">
             <div class="row">
                 <center>
@@ -13,7 +13,7 @@
                 </center>
             </div>
         </div>
-    </div><!footer-->
+    </div>
     <!--=== End Footer ===-->
 
     <!--=== Copyright ===-->
